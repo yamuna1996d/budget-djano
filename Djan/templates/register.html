@@ -17,18 +17,7 @@
         <table class="table">
             {% csrf_token %}
             {{ form|crispy }}
-            <tr>
-                <td>User name</td>
-                <td><input type="text" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="text" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>Confirm Password</td>
-                <td><input type="text" class="form-control"></td>
-            </tr>
+            
                 <tr>
                     <td> <center><button class="btn btn-danger" >Submit</button> </center> </td>
                 </tr>
