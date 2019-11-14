@@ -1,6 +1,7 @@
 <!-- {% extends 'base.html'%}
 {% block myContent %} -->
 {% load static from staticfiles %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +13,21 @@
     <title>Document</title>
 </head>
 <body>
+        <form method="POST" class="from-group">
         <table class="table">
-             
-            <tr>
-                    <td>User name</td>
-                    <td><input type="text" class="form-control"></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><input type="text" class="form-control"></td>
-                </tr>
+            {% csrf_token %}
+            {{ form|crispy }}
+            
             
                 <tr>
                     <td> <center><button class="btn btn-danger" >Submit</button> </center> </td>
                 </tr>
-            
+                
             </table>
-   
-    
+   </form>
+
+    <center>Don't have an account? <a href="/register" target="blank"><strong>register here</strong></a>!</center>
+  
 </body>
 </html>
     <!-- {% endblock %} -->

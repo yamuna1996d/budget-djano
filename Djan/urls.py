@@ -2,9 +2,11 @@ from django.conf.urls import url
 from . import views
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+app_name="djan"
 urlpatterns=[
     path('',views.indexpage,name='index'),
-    path('Login/',views.login,name='login'),
+    path('register/',views.register,name='register'),
     path('family/',views.family,name='family'),
     path('income/',views.income,name='income'),
     path('expenditure/',views.expenditure,name='expenditure'),
