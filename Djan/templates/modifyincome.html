@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block myContent %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <nav class="nav nav-pills nav-justified">
+                <a class="nav-item nav-link active" href="incomed/">Income Details</a>
+                <a class="nav-item nav-link" href="incomedv/">View Details</a>
+                <a class="nav-item nav-link" href="modeincome/">Modify Details</a>
+                
+              </nav>
+    <form method="POST">
+            <table class="table">
+                    <tr>
+                        <td>Source of income</td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>Income date</td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td>Income from</td>
+                        <td><input type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-danger">Submit</button></td>
+                    </tr>
+                </table>
+    </form>
+</body>
+</html>
+{% endblock %}

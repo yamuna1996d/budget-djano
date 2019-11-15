@@ -54,13 +54,23 @@ def register(request):
 def family(request):
     return render(request,'home.html')
 def income(request):
-    return render(request,'home.html')
+    return render(request,'income.html')
+def incomed(request):
+    return render(request,'incomedetails.html')
+def incomedv(request):
+    return render(request,'incomedview.html')
+def modincome(request):
+    return render(request,'modifyincome.html')
 def expenditure(request):
-    return render(request,'home.html')
+    return render(request,'expenditure.html')
+def expendetail(request):
+    return render(request,'expendetail.html')
+def exmodify(request):
+    return render(request,'exmodify.html')
 def liability(request):
     return render(request,'home.html')
 def savings(request):
-    return render(request,'home.html')
+    return render(request,'savings.html')
 # def UserForm(request):
 #      form=UserForm()
 #      return render(request,'login.html',{'form':form})
