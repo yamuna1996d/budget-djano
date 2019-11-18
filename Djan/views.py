@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse #header files
-#from .forms import NewUserForm
-# from django.contrib.auth import UserForm
+from .forms import IncomeForm
+from .forms import Expenditure
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,authenticate
 # Create your views here.
@@ -55,14 +55,32 @@ def family(request):
     return render(request,'home.html')
 def income(request):
     return render(request,'income.html')
+
 def incomed(request):
-    return render(request,'incomedetails.html')
+    if request.method == "POST":
+        form = IncomeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('incomedview/')
+
+    else:
+        form = IncomeForm()
+    return render(request,'incomedetails.html',{'form':form})
+
 def incomedv(request):
     return render(request,'incomedview.html')
 def modincome(request):
     return render(request,'modifyincome.html')
 def expenditure(request):
-    return render(request,'expenditure.html')
+    if request.method == "POST":
+        form = Expenditure(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('expendetail/')
+
+    else:
+        form = Expenditure()
+    return render(request,'expenditure.html',{'form':form})
 def expendetail(request):
     return render(request,'expendetail.html')
 def exmodify(request):
@@ -71,6 +89,3 @@ def liability(request):
     return render(request,'home.html')
 def savings(request):
     return render(request,'savings.html')
-# def UserForm(request):
-#      form=UserForm()
-#      return render(request,'login.html',{'form':form})

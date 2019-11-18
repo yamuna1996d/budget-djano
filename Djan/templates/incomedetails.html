@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block myContent %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +17,11 @@
                 
               </nav>
     <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+
             <table class="table">
-                    <tr>
+                    <!-- <tr>
                         <td>Source of income</td>
                         <td><input type="text" class="form-control"></td>
                     </tr>
@@ -28,7 +32,7 @@
                     <tr>
                         <td>Income from</td>
                         <td><input type="text" class="form-control"></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td><button class="btn btn-danger">Submit</button></td>
                     </tr>

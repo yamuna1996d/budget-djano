@@ -10,6 +10,7 @@ urlpatterns=[
     path('family/',views.family,name='family'),
     path('family/income/',views.income,name='income'),
     path('family/income/incomed/',views.incomed,name='incomed'),
+    path('family/income/incomed/incomedview/',views.incomedv,name='incomedv'),
     path('family/income/incomed/incomedv/',views.incomedv,name='incomedv'),
     path('family/income/incomedv/modincome/',views.modincome,name='modincome'),
     path('family/income/incomedv/',views.incomedv,name='incomedv'),

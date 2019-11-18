@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime,date
 
 # Create your models here.
 
@@ -7,6 +8,21 @@ GENDER=(
     ('F','FEMALE'),
     ('O','OTHERS')
 )
+
+class Income(models.Model):
+    incomeid=models.IntegerField()
+    source=models.CharField(max_length=30)
+    date=models.DateTimeField(auto_now_add=True)
+    date = models.DateField()
+    # amount=models.IntegerField()
+    
+class Expenditure(models.Model):
+    exid=models.IntegerField()
+    source=models.CharField(max_length=30)
+    date=models.DateTimeField(auto_now_add=True)
+    date = models.DateField()
+
+
 
 class Student(models.Model):
     name=models.CharField(max_length=30)
