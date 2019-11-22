@@ -13,7 +13,6 @@ class IncomeForm(forms.ModelForm):
     incomeid=forms.CharField(max_length=30,required=False)
     source=forms.CharField(max_length=30,required=False)
     date=forms.DateField(widget=forms.SelectDateWidget)
-    # amount=forms.IntegerField()
     class Meta:
         model=Income
         fields=("incomeid","source","date")

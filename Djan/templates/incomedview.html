@@ -15,7 +15,23 @@
                 <a class="nav-item nav-link" href="modincome/">Modify Details</a>
                 
               </nav>
-    <form method="POST">
+              <div class="container">
+                <!-- <h1>Profile</h1>
+                <p>Username: {{ user }}</p>
+                <p>First name: {{ user.first_name }}</p>
+                <p>Last name: {{ user.last_name }}</p>
+                <p>Email: {{ user.email }}</p>
+                <p>Description: {{ user.userprofile.description }}</p>
+                <p>Phone: {{ user.userprofile.phone }}</p>
+                <p>City: {{ user.userprofile.city }}</p>
+                <p>Website: {{ user.userprofile.website }}</p> -->
+               {% for incom in  Incomedetail %}
+                  <p>Income id: {{ incom.incomeid }}</p>
+                  <p>Source: {{ incom.source }}</p>
+                  <p>Date: {{ incom.date }}</p>
+               {% endfor %}
+                </div>
+    <!-- <form method="POST">
             <table class="table">
                     <tr>
                         <td>Source of income</td>
@@ -32,8 +48,8 @@
                     <tr>
                         <td><button class="btn btn-danger">Submit</button></td>
                     </tr>
-                </table>
-    </form>
+                </table> -->
+    <!-- </form> -->
 </body>
 </html>
 {% endblock %}

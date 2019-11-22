@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse #header files
+from .models import Income
 from .forms import IncomeForm
 from .forms import Expenditure
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
@@ -68,7 +69,9 @@ def incomed(request):
     return render(request,'incomedetails.html',{'form':form})
 
 def incomedv(request):
-    return render(request,'incomedview.html')
+     obj = Income.objects.all()
+     
+     return render(request,'incomedview.html',{'Incomedetail':obj})
 def modincome(request):
     return render(request,'modifyincome.html')
 def expenditure(request):
