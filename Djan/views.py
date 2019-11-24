@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse #header files
 from .models import Income
-from .forms import IncomeForm
+from .forms import IncomeForm,DetailedForm
 from .forms import Expenditure
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,authenticate
@@ -73,7 +73,14 @@ def incomedv(request):
      
      return render(request,'incomedview.html',{'Incomedetail':obj})
 def modincome(request):
-    return render(request,'modifyincome.html')
+     obj = Income.objects.all()
+     if request.method == "POST":
+        obj = Income.objects.all()
+        obj.delete()
+        messages.success(request, "Post successfully deleted!")
+        return redirect('incomedview/')
+    
+     return render(request,'modifyincome.html',{'Incomedetail':obj})
 def expenditure(request):
     if request.method == "POST":
         form = Expenditure(request.POST)
@@ -84,6 +91,20 @@ def expenditure(request):
     else:
         form = Expenditure()
     return render(request,'expenditure.html',{'form':form})
+
+def deleteincome(request,incomeid):
+        # Income.objects.filter(incomeid=incomeid).delete() 
+    obj = Income.get(Income,incomeid=incomeid)
+    if request.method == "POST":
+        form = DetailedForm(request.POST,instance=obj)
+        obj.delete()
+        messages.success(request, "Post successfully deleted!")
+    context={
+        {'form':form},
+        {'obj':obj},
+    }
+    return render(request,'delete.html',context)
+    
 def expendetail(request):
     return render(request,'expendetail.html')
 def exmodify(request):

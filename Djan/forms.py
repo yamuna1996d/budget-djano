@@ -16,7 +16,13 @@ class IncomeForm(forms.ModelForm):
     class Meta:
         model=Income
         fields=("incomeid","source","date")
-
+class DetailedForm(forms.ModelForm):
+    incomeid=forms.CharField(max_length=30,required=False)
+    source=forms.CharField(max_length=30,required=False)
+    date=forms.DateField(widget=forms.SelectDateWidget)
+    class Meta:
+        model=Income
+        fields=("incomeid","source","date")
 
 class Expenditure(forms.ModelForm):
     exid=forms.CharField(max_length=30,required=False)

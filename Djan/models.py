@@ -15,7 +15,7 @@ class Income(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     date = models.DateField()
     # amount=models.IntegerField()
-    
+
 class Expenditure(models.Model):
     exid=models.IntegerField()
     source=models.CharField(max_length=30)

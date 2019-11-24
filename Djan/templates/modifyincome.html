@@ -1,39 +1,23 @@
 {% extends 'base.html' %}
 {% block myContent %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+
         <nav class="nav nav-pills nav-justified">
                 <a class="nav-item nav-link active" href="incomed/">Income Details</a>
                 <a class="nav-item nav-link" href="incomedv/">View Details</a>
                 <a class="nav-item nav-link" href="modeincome/">Modify Details</a>
-                
+        {% for incom in  Incomedetail %}
               </nav>
-    <form method="POST">
-            <table class="table">
-                    <tr>
-                        <td>Source of income</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Income date</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Income from</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td><button class="btn btn-danger">Submit</button></td>
-                    </tr>
-                </table>
-    </form>
-</body>
-</html>
+              <div>
+                <p>Income id: {{ incom.incomeid }}</p>
+                <p>Source: {{ incom.source }}</p>
+                <p>Date:{{ incom.date }}</p>
+              </div>
+              <div>
+                      <form method="POST" class="from-group">
+                              {% csrf_token %}
+                              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="incomedelete/">Update</a>
+                              <a class="btn btn-danger btn-sm mt-1 mb-1" href="deleteincome/">Delete</a>
+                      </form>
+              </div>
+        {% endfor %}
 {% endblock %}
