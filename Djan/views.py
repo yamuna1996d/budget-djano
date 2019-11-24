@@ -93,18 +93,13 @@ def expenditure(request):
     return render(request,'expenditure.html',{'form':form})
 
 def deleteincome(request,incomeid):
-        # Income.objects.filter(incomeid=incomeid).delete() 
-    obj = Income.get(Income,incomeid=incomeid)
-    if request.method == "POST":
-        form = DetailedForm(request.POST,instance=obj)
-        obj.delete()
-        messages.success(request, "Post successfully deleted!")
-    context={
-        {'form':form},
-        {'obj':obj},
-    }
-    return render(request,'delete.html',context)
-    
+    Income.objects.filter(incomeid=incomeid).delete()    
+    messages.success(request, "Post successfully deleted!")
+    return render(request,'delete.html')
+
+def editincome(request):
+
+    return render(request,'editincome.html')
 def expendetail(request):
     return render(request,'expendetail.html')
 def exmodify(request):

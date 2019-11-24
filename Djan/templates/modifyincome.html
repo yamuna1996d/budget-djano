@@ -15,8 +15,8 @@
               <div>
                       <form method="POST" class="from-group">
                               {% csrf_token %}
-                              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="incomedelete/">Update</a>
-                              <a class="btn btn-danger btn-sm mt-1 mb-1" href="deleteincome/">Delete</a>
+                              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="editincome/">Update</a> 
+                              <a class="btn btn-danger btn-sm mt-1 mb-1" href="deleteincome/{{incom.incomeid}}">Delete</a>
                       </form>
               </div>
         {% endfor %}
