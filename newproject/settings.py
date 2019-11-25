@@ -25,7 +25,7 @@ SECRET_KEY = 'v-2gl-tu&0j*2n3pe=*#040l93-h$r=)k!3urxmidp&ay!p68u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0','localhost','budgetpython.herokuapp.com/']
+ALLOWED_HOSTS = ['0.0.0.0','localhost','budgetpython.herokuapp.com']
 
 
 # Application definition
