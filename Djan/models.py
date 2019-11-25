@@ -14,13 +14,14 @@ class Income(models.Model):
     source=models.CharField(max_length=30)
     date=models.DateTimeField(auto_now_add=True)
     date = models.DateField()
-    # amount=models.IntegerField()
+    amount=models.IntegerField(default='300')
 
 class Expenditure(models.Model):
     exid=models.IntegerField()
     source=models.CharField(max_length=30)
     date=models.DateTimeField(auto_now_add=True)
     date = models.DateField()
+    amount=models.IntegerField(default='300')
 
 
 

@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse #header files
-from .models import Income
-from .forms import IncomeForm,DetailedForm
-from .forms import Expenditure
+from .models import Income,Expenditure
+from django.db.models import Sum
+from .forms import IncomeForm
+from .forms import ExpenditureForm
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,authenticate
 # Create your views here.
@@ -83,28 +84,47 @@ def modincome(request):
      return render(request,'modifyincome.html',{'Incomedetail':obj})
 def expenditure(request):
     if request.method == "POST":
-        form = Expenditure(request.POST)
+        form = ExpenditureForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('expendetail/')
 
     else:
-        form = Expenditure()
+        form = ExpenditureForm()
     return render(request,'expenditure.html',{'form':form})
 
 def deleteincome(request,incomeid):
     Income.objects.filter(incomeid=incomeid).delete()    
     messages.success(request, "Post successfully deleted!")
-    return render(request,'delete.html')
+    return redirect('incomedview/')
+    return render(request,'modifyincome.html')
 
-def editincome(request):
+def editincome(request,incomeid):
+	try:
+		obj = Income.objects.get(incomeid = incomeid)
+	except Books.DoesNotExist:
+		return redirect('modincome/')
+	incomeform = IncomeForm(request.POST or None, instance = obj)
+	if incomeform.is_valid():
+		incomeform.save()
+		return redirect('index')
+	return render(request, 'editincome.html', {'form':incomeform})
 
-    return render(request,'editincome.html')
+
 def expendetail(request):
-    return render(request,'expendetail.html')
+    obj = Expenditure.objects.all()
+    return render(request,'expendetail.html',{'Expendetail':obj})
 def exmodify(request):
     return render(request,'exmodify.html')
-def liability(request):
-    return render(request,'home.html')
+
 def savings(request):
-    return render(request,'savings.html')
+    obj = Income.objects.all()
+    expd = Expenditure.objects.all()
+    findtotalIncome = Income.objects.aggregate(Sum('amount'))
+    findtotalIncome=findtotalIncome['amount__sum'];
+    findtotalExpenditure=Expenditure.objects.aggregate(Sum('amount'))
+    findtotalExpenditure=findtotalExpenditure['amount__sum'];
+    findsavings=int(findtotalIncome-findtotalExpenditure)
+    newval=str(findsavings)
+    print(findsavings)
+    return render(request,'savings.html',{'Incomedetail':obj,'totalincome':findtotalIncome,'totalexpence':findtotalExpenditure,'savings':newval,'Expend':expd})

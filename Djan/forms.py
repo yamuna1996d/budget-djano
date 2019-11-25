@@ -13,31 +13,28 @@ class IncomeForm(forms.ModelForm):
     incomeid=forms.CharField(max_length=30,required=False)
     source=forms.CharField(max_length=30,required=False)
     date=forms.DateField(widget=forms.SelectDateWidget)
+    amount=forms.IntegerField()
     class Meta:
         model=Income
-        fields=("incomeid","source","date")
-class DetailedForm(forms.ModelForm):
-    incomeid=forms.CharField(max_length=30,required=False)
-    source=forms.CharField(max_length=30,required=False)
-    date=forms.DateField(widget=forms.SelectDateWidget)
-    class Meta:
-        model=Income
-        fields=("incomeid","source","date")
+        fields=("incomeid","source","date","amount")
 
-class Expenditure(forms.ModelForm):
+class ExpenditureForm(forms.ModelForm):
     exid=forms.CharField(max_length=30,required=False)
     source=forms.CharField(max_length=30,required=False)
     date=forms.DateField(widget=forms.SelectDateWidget)
-
-
+    amount=forms.IntegerField()
     class Meta:
-        model=User
-        fields=("username","password")
+        model=Expenditure
+        fields=("exid","source","date","amount")
+
+
+    # class Meta:
+    #     model=User
+    #     fields=("username","password")
 
        
 
-        model=Expenditure
-        fields=("exid","source","date")
+        
 
 
     # def save(self, commit=True):

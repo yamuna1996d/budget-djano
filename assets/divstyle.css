@@ -1,0 +1,11 @@
+
+    #rightbox{ 
+                float:right; 
+                width:40%; 
+                height:280px; 
+            } 
+     #leftbox { 
+                float:left; 
+                border-right-width:30%;
+                
+            } 

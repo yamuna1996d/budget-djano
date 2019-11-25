@@ -20,23 +20,12 @@
             {% csrf_token %}
             {{form|crispy}}
 
-            <table class="table">
-                    <tr>
-                        <td>Source of income</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Income date</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Income from</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr> 
-                    <tr>
-                        <td><button class="btn btn-danger">Submit</button></td>
-                    </tr>
-                </table> 
+            {% for exp in  Expendetail %}
+                      <p>Expence id: {{ exp.exid }}</p>
+                      <p>Source: {{ exp.source }}</p>
+                      <p>Date: {{ exp.date }}</p> 
+                      <p>Amount:{{ exp.amount }}</p>
+         {% endfor %}
     </form>
 </body>
 </html>

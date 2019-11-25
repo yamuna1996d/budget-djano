@@ -3,37 +3,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/static/divstyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
-        <nav class="nav nav-pills nav-justified">
-                <a class="nav-item nav-link active" href="incomed/">Savings Details</a>
-                <a class="nav-item nav-link" href="incomedv/">View Details</a>
-                <a class="nav-item nav-link" href="modincome/">Modify Details</a>
-                
-              </nav>
+       
+<div id="leftbox">
     <form method="POST">
-            <table class="table">
-                    <tr>
-                        <td>Source of income</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Income date</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Income from</td>
-                        <td><input type="text" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td><button class="btn btn-danger">Submit</button></td>
-                    </tr>
-                </table>
+        <h1>INCOME DETAILS</h1>
+        {% csrf_token %}
+        {% for incom in  Incomedetail %}
+                  <p>Income id: {{ incom.incomeid }}</p>
+                  <p>Source: {{ incom.source }}</p>
+                  <p>Date: {{ incom.date }}</p>
+                  <p>Income:{{ incom.amount }}</p>
+               {% endfor %}
+
+               <p>
+                   Total income:{{totalincome}}
+               </p>
     </form>
+</div>
+<div id="rightbox">
+        <form method="POST">
+            <h1>EXPENDITURE DETAILS</h1>
+            {% csrf_token %}
+            {% for exp in  Expend %}
+            
+                      <p>Expence id: {{ exp.exid }}</p>
+                      <p>Source: {{ exp.source }}</p>
+                      <p>Date: {{ exp.date }}</p> 
+                      <p>Amount:{{ exp.amount }}</p>
+                                        
+
+                   {% endfor %}
+
+                   <p>Total Expense:{{ totalexpence }}</p> 
+        </form>
+</div >
+    
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <div class="form-row">
+                <div class="col-md-6 mb-3">
+                 <center> <p>Total Savings:{{savings}}</p></center>
+                
+</div>
 </body>
 </html>
 {% endblock %}

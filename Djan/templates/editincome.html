@@ -1,28 +1,31 @@
 {% extends 'base.html' %}
 {% block myContent %}
-{% load crispy_forms_tags %}
-    <div>
-        <form method="POST" class="from-group">
-                {% csrf_token %}
-                {{form.form}}
-                <table class="table">
-                        <tr>
-                            <td>Source of income</td>
-                            <td><input type="text" class="form-control" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>Income date</td>
-                            <td><input type="text" class="form-control"></td>
-                        </tr>
-                        <tr>
-                            <td>Income from</td>
-                            <td><input type="text" class="form-control"></td>
-                        </tr> 
-                        <tr>
-                           <td><a class="btn btn-danger btn-sm mt-1 mb-1" href="">Update</a></td> 
-                        </tr>
-                </table>          
-        </form>
+
+
+<h1> EDIT INCOME</h1>
+<div class="card-columns">
+<form method="POST">
+    {% csrf_token %}
+    
+	<table class="table">
+    {% for incom in form %}
+
+    <tr>
+        <td> {{ incom.label }} </td>
+
+        <td>
+                {{ incom }}
+        </td>
+    </tr>
+  
+
+     {% endfor %}
+
+     </table>
+
+     <button type="submit"> EDIT </button>
+</form>
+     
 </div>
              
 
